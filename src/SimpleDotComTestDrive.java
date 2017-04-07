@@ -14,11 +14,12 @@ public class SimpleDotComTestDrive {
 
         String testResult = "failed";
 
-        if (testResult.equals("hit")){
+        if (testResult.equals("hit")) {
             testResult = "passed";
 //        }else if(testResult.equals("miss")){
 //            testResult = "failed";
 //        }
-        System.out.println(testResult);
+            System.out.println(testResult);
+        }
     }
 }
