@@ -9,17 +9,22 @@ public class Game {
         DotCom dot = new DotCom();
         Scanner userInput = new Scanner(System.in);
 
-        int random = 0;
-        int [] ramdomlyGenerated = {3, 4, 5};
+        int randomlyGenerated = (int) Math.random() * 5;
+        int [] locations = {randomlyGenerated, randomlyGenerated+1, randomlyGenerated+2};
 
-        dot.setLocationCells(ramdomlyGenerated);
+        dot.setLocationCells(locations);
 
         boolean isAlive = true;
 
         while (isAlive){
             System.out.println("Enter a number: ");
             String n = userInput.nextLine();
-            if (n == )
+            String result = dot.checkYourself(n);
+            numOfGuesses++;
+            if (result.equals("kill")){
+                isAlive = false;
+                System.out.println("You took " + numOfGuesses + " guesses");
+            }
 
         }
     }
