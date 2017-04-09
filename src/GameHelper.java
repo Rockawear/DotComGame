@@ -3,14 +3,14 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-/**
+/**This class helps to create the cell locations for the DotComs.
  * Created by rfixe on 4/9/2017.
  */
 public class GameHelper {
     private static final String alphabet = "sbcdefg";
     private int gridLength = 7;
     private int gridSize = 49;
-    private int [] grid = new int [gridSize];
+    private int[] grid = new int[gridSize];
     private int comcount = 0;
 
     public String getUserInput(String prompt) {
@@ -30,36 +30,36 @@ public class GameHelper {
         return inputLine.toLowerCase();
     }
 
-    public ArrayList<String> placeDotCom(int comSize){
-        ArrayList<String > alphaCells = new ArrayList<String >();
+    public ArrayList<String> placeDotCom(int comSize) {
+        ArrayList<String> alphaCells = new ArrayList<String>();
         String temp = null;
-        int [] coords = new int[comSize];
-        int [] alphacoords = new int[comSize];
+        int[] coords = new int[comSize];
+        int[] alphacoords = new int[comSize];
         int attempts = 0;
         boolean success = false;
         int location = 0;
 
         comcount++;
         int incr = 1;
-        if ((comcount % 2) == 1){
+        if ((comcount % 2) == 1) {
             incr = gridLength;
         }
 
-        while (!success & attempts++ < 200){
+        while (!success & attempts++ < 200) {
             location = (int) (Math.random() * gridSize);
             int x = 0;
             success = true;
-            while (success && x < comSize){
-                if (grid[location] == 0){
+            while (success && x < comSize) {
+                if (grid[location] == 0) {
                     coords[x++] = location;
                     location += incr;
-                    if (location >= gridSize){
+                    if (location >= gridSize) {
                         success = false;
                     }
-                    if (x > 0 && (location % gridLength == 0)){
+                    if (x > 0 && (location % gridLength == 0)) {
                         success = false;
                     }
-                }else {
+                } else {
                     success = false;
                 }
             }
@@ -68,7 +68,7 @@ public class GameHelper {
         int row = 0;
         int column = 0;
 
-        while (x < comSize){
+        while (x < comSize) {
             grid[coords[x]] = 1;
             row = (int) (coords[x] / gridLength);
             column = coords[x] % gridLength;

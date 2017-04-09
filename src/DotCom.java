@@ -5,13 +5,13 @@ import java.util.ArrayList;
  */
 public class DotCom {
     String nameHolder;
-    ArrayList<String>locationCells = new ArrayList<>();
+    ArrayList<String> locationCells = new ArrayList<>();
 
-    public void setNameHolder(String nameHolder){
+    public void setNameHolder(String nameHolder) {
         this.nameHolder = nameHolder;
     }
 
-    public void setLocationCells(ArrayList<String>loc) {
+    public void setLocationCells(ArrayList<String> loc) {
 
         this.locationCells = loc;
     }

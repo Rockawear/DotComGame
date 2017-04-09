@@ -1,5 +1,3 @@
-import com.sun.xml.internal.ws.api.ha.StickyFeature;
-
 import java.util.ArrayList;
 
 /**
@@ -8,11 +6,11 @@ import java.util.ArrayList;
 public class DotComBust {
     private GameHelper helper = new GameHelper();
     private ArrayList<DotCom> dotComList = new ArrayList<DotCom>();
-    private int  numOfGuesses = 0;
+    private int numOfGuesses = 0;
 
 
-    private void setUpGame(){
-
+    private void setUpGame() {
+    // Object creation and stick them in the ArrayList
         DotCom dot0 = new DotCom();
         DotCom dot1 = new DotCom();
         DotCom dot2 = new DotCom();
@@ -29,45 +27,48 @@ public class DotComBust {
         System.out.println("Pets.com, eToys.com, Go2.com");
         System.out.println("Try to sink them all in the fewest number of guesses");
 
-        for (DotCom dotComToSet: dotComList){
+        for (DotCom dotComToSet : dotComList) {
             ArrayList<String> newLocation = helper.placeDotCom(3);
             dotComToSet.setLocationCells(newLocation);
         }
     }
-    private void startPlaying(){
-        while (!dotComList.isEmpty()){
+    //This is the method that starts the game
+    private void startPlaying() {
+        while (!dotComList.isEmpty()) {
             String userGuess = helper.getUserInput("Enter a guess");
             checkUserGuess(userGuess);
         }
         finishGame();
     }
-
-    private void checkUserGuess(String userGuess){
+    //Here is the method that check on the user guesses, might need improvement
+    private void checkUserGuess(String userGuess) {
         numOfGuesses++;
         String result = "miss";
 
-        for (DotCom dotComToTest: dotComList){
+        for (DotCom dotComToTest : dotComList) {
             result = dotComToTest.checkYourself(userGuess);
-            if (result.equals("hit")){
+            if (result.equals("hit")) {
                 break;
             }
-            if (result.equals("kill")){
+            if (result.equals("kill")) {
                 dotComList.remove(dotComToTest);
                 break;
             }
         }
     }
-    private void finishGame(){
-        System.out.println("All Dot Comd are dead! Your stuck is now worthless.");
-        if (numOfGuesses <= 18){
-            System.out.println("It only took you "+ numOfGuesses + " guesses.");
+    //Here is the method to end the game after 18 guesses
+    private void finishGame() {
+        System.out.println("All Dot Coms are dead! Your stuck is now worthless.");
+        if (numOfGuesses <= 18) {
+            System.out.println("It only took you " + numOfGuesses + " guesses.");
             System.out.println(" You got out before your options sank.");
-        }else {
+        } else {
             System.out.println("Took you long enough. " + numOfGuesses + " guesses.");
             System.out.println("Fish are dancing with your options.");
         }
     }
-    public static void main(String [] args){
+    //This is my main method
+    public static void main(String[] args) {
         DotComBust game = new DotComBust();
         game.setUpGame();
         game.startPlaying();
